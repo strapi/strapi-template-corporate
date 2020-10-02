@@ -1,0 +1,144 @@
+{
+  "categories": [
+    {
+      "title":"Cooking",
+      "description":"I like to experiment with food recipes"
+    },
+    {
+      "title":"Design",
+      "description":"I create beautiful and intuitive user interfaces"
+    },
+    {
+      "title":"Coding",
+      "description":"I build products with code"
+    }
+  ],
+  "projects": [
+    {
+      "title":"Pepperoni pizza",
+      "description":"My last cooking project, and my first pizza. Pepperoni is characteristically soft, slightly smoky, and bright red in color. Thinly sliced pepperoni is a popular pizza topping in American pizzerias.",
+      "date":"2020-05-19",
+      "slug":"pepperoni-pizza",
+      "content":[
+        {
+          "__component":"sections.rich-text",
+          "content":"I know it’s just a small change on the traditional pepperoni pizza but it makes a big difference to add that freshness to this classic. And the way it pairs with pepperoni is perfection. Oregano is often a key flavor in pizza so why not let it shine bright?\n\nHere’s another thing you may think I’m crazy for saying, I like turkey pepperoni just as much, if not more than, regular pepperoni (my husband even thinks the same thing).\n\nIt has all the same flavors just a lot less fat, so you don’t end up with a pizza swimming in a layer of grease from an overdose of pepperoni fat.\n\nDon’t get this pizza wrong, it’s definitely no low cal pizza, it’s just tweaked to suit my personal taste. If you like regular pepperoni too much to ever even dare reach for something else, by all means go ahead and use that.\n\nI’m not here to change your taste in food or tell you only my way is the right way, I just share my opinion (and I’m very opinionated when it comes to food, but aren’t we all?). Turkey bacon on the other hand, don’t go there."
+        }
+      ],
+      "coverImage":null,
+      "categories":[
+        {
+          "id":1
+        }
+      ]
+    },
+    {
+      "title":"Hacker News Redesign",
+      "description":"Sometimes browse Hacker News to keep up with the tech industry. But the site is old and hard to read. I redesigned its UI to make it more modern and accessible.",
+      "date":"2020-07-16",
+      "slug":"hacker-news-redesign",
+      "content":[
+        {
+          "__component":"sections.rich-text",
+          "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+          "__component":"sections.large-media",
+          "description":"The design process",
+          "media":null
+        },
+        {
+          "__component":"sections.rich-text",
+          "content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\n> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?\n\nQuis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+        }
+      ],
+      "coverImage":null,
+      "categories":[
+        {
+          "id":2
+        }
+      ]
+    },
+    {
+      "title":"Vue.js Todo List",
+      "description":"I needed to get better at managing my daily tasks. So I build a nice little todo list application. It performs all CRUD operations.",
+      "date":"2020-08-06",
+      "slug":"vue-js-todo-list",
+      "content":[
+        {
+          "__component":"sections.rich-text",
+          "content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\n* Looks good\n* Loads fast\n* Mobile friendly\n* Cloud backup"
+        },
+        {
+          "__component":"sections.images-slider",
+          "title":"Cool images slider",
+          "images":[]
+        }
+      ],
+      "coverImage":null,
+      "categories":[
+        {
+          "id":3
+        },
+        {
+          "id":2
+        }
+      ]
+    }
+  ],
+  "home": {
+    "title":"Strapi portfolio starter",
+    "bio":"This is a sample portfolio website. All this site's data is managed in a [Strapi project](https://strapi.io). The frontend was built with [Gridsome](https://gridsome.org), a Vue.js framework to build static sites. You can use this starter and customize it to build your own portfolio. You can also check out our other [Strapi starters](https://github.com/strapi?q=starter).",
+    "seo":{
+      "title":"Strapi Gridsome portfolio demo",
+      "description":"A sample application made with Strapi and Gridsome.",
+      "shareImage":null
+    }
+  },
+  "about": {
+    "id":1,
+    "content":[
+      {
+        "__component":"sections.rich-text",
+        "content":"# About me\n\nThis is a section where you get to talk about yourself. Show off your personality, interests, or childhood pictures.\n\nFor example, here are my hobbies:\n\n* Scuba diving\n* Hiking\n* Karaoke nights"
+      },
+      {
+        "__component":"sections.large-media",
+        "description":"My family last summer",
+        "media":null
+      },
+      {
+        "__component":"sections.rich-text",
+        "content":"Again, you can add as much content as you want here. People want to get to know you!\n\nYou can also write *italic* or **bold** text.\n\n> Wow this about section looks great\n>\n> -- A happy Strapi user\n"
+      }
+    ],
+    "seo":{
+      "title":"About me",
+      "description":"Me, my life, my hobbies, and a summary of what I do outside of work.",
+      "shareImage":null
+    }
+  },
+  "global": {
+    "siteName":"Portfolio",
+    "contactEmail":"contact@email.com",
+    "siteLanguage":"en",
+    "socialNetworks":[
+      {
+        "title":"Twitter",
+        "url":"#",
+        "icon":null
+      },
+      {
+        "title":"LinkedIn",
+        "url":"#",
+        "icon":null
+      },
+      {
+        "title":"Instagram",
+        "url":"#",
+        "icon":null
+      }
+    ],
+    "favicon":null
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "globals",
+  "info": {
+    "name": "Global"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string"
+    },
+    "contactEmail": {
+      "type": "string"
+    },
+    "socialNetworks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.link"
+    },
+    "siteLanguage": {
+      "type": "string",
+      "default": "en",
+      "maxLength": 2
+    },
+    "favicon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

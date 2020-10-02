@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_images_sliders",
+  "info": {
+    "name": "imagesSlider",
+    "icon": "arrows-alt-h"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    }
+  }
+}

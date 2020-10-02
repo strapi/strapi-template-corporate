@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_large_medias",
+  "info": {
+    "name": "largeMedia",
+    "icon": "photo-video"
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

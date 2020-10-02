@@ -1,7 +1,1 @@
-{
-  "package": {
-    "dependencies": {
-      "fs-extra": "^9.0.1"
-    }
-  }
-}
+{}

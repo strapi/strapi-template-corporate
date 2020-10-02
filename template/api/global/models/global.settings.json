@@ -9,21 +9,14 @@
     "timestamps": true
   },
   "attributes": {
-    "siteName": {
-      "type": "string"
-    },
-    "contactEmail": {
-      "type": "string"
-    },
-    "socialNetworks": {
+    "metadata": {
       "type": "component",
-      "repeatable": true,
-      "component": "elements.link"
+      "repeatable": false,
+      "component": "meta.metadata"
     },
-    "siteLanguage": {
+    "metaTitleSuffix": {
       "type": "string",
-      "default": "en",
-      "maxLength": 2
+      "required": true
     },
     "favicon": {
       "model": "file",
@@ -33,6 +26,21 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "notificationBanner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.notification-banner"
+    },
+    "navbar": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.navbar"
+    },
+    "footer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.footer"
     }
   }
 }

@@ -1,144 +1,367 @@
 {
-  "categories": [
-    {
-      "title":"Cooking",
-      "description":"I like to experiment with food recipes"
-    },
-    {
-      "title":"Design",
-      "description":"I create beautiful and intuitive user interfaces"
-    },
-    {
-      "title":"Coding",
-      "description":"I build products with code"
-    }
-  ],
-  "projects": [
-    {
-      "title":"Pepperoni pizza",
-      "description":"My last cooking project, and my first pizza. Pepperoni is characteristically soft, slightly smoky, and bright red in color. Thinly sliced pepperoni is a popular pizza topping in American pizzerias.",
-      "date":"2020-05-19",
-      "slug":"pepperoni-pizza",
-      "content":[
-        {
-          "__component":"sections.rich-text",
-          "content":"I know it’s just a small change on the traditional pepperoni pizza but it makes a big difference to add that freshness to this classic. And the way it pairs with pepperoni is perfection. Oregano is often a key flavor in pizza so why not let it shine bright?\n\nHere’s another thing you may think I’m crazy for saying, I like turkey pepperoni just as much, if not more than, regular pepperoni (my husband even thinks the same thing).\n\nIt has all the same flavors just a lot less fat, so you don’t end up with a pizza swimming in a layer of grease from an overdose of pepperoni fat.\n\nDon’t get this pizza wrong, it’s definitely no low cal pizza, it’s just tweaked to suit my personal taste. If you like regular pepperoni too much to ever even dare reach for something else, by all means go ahead and use that.\n\nI’m not here to change your taste in food or tell you only my way is the right way, I just share my opinion (and I’m very opinionated when it comes to food, but aren’t we all?). Turkey bacon on the other hand, don’t go there."
-        }
-      ],
-      "coverImage":null,
-      "categories":[
-        {
-          "id":1
-        }
-      ]
-    },
-    {
-      "title":"Hacker News Redesign",
-      "description":"Sometimes browse Hacker News to keep up with the tech industry. But the site is old and hard to read. I redesigned its UI to make it more modern and accessible.",
-      "date":"2020-07-16",
-      "slug":"hacker-news-redesign",
-      "content":[
-        {
-          "__component":"sections.rich-text",
-          "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        },
-        {
-          "__component":"sections.large-media",
-          "description":"The design process",
-          "media":null
-        },
-        {
-          "__component":"sections.rich-text",
-          "content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\n> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?\n\nQuis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-        }
-      ],
-      "coverImage":null,
-      "categories":[
-        {
-          "id":2
-        }
-      ]
-    },
-    {
-      "title":"Vue.js Todo List",
-      "description":"I needed to get better at managing my daily tasks. So I build a nice little todo list application. It performs all CRUD operations.",
-      "date":"2020-08-06",
-      "slug":"vue-js-todo-list",
-      "content":[
-        {
-          "__component":"sections.rich-text",
-          "content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\n* Looks good\n* Loads fast\n* Mobile friendly\n* Cloud backup"
-        },
-        {
-          "__component":"sections.images-slider",
-          "title":"Cool images slider",
-          "images":[]
-        }
-      ],
-      "coverImage":null,
-      "categories":[
-        {
-          "id":3
-        },
-        {
-          "id":2
-        }
-      ]
-    }
-  ],
-  "home": {
-    "title":"Strapi portfolio starter",
-    "bio":"This is a sample portfolio website. All this site's data is managed in a [Strapi project](https://strapi.io). The frontend was built with [Gridsome](https://gridsome.org), a Vue.js framework to build static sites. You can use this starter and customize it to build your own portfolio. You can also check out our other [Strapi starters](https://github.com/strapi?q=starter).",
-    "seo":{
-      "title":"Strapi Gridsome portfolio demo",
-      "description":"A sample application made with Strapi and Gridsome.",
-      "shareImage":null
-    }
-  },
-  "about": {
-    "id":1,
-    "content":[
-      {
-        "__component":"sections.rich-text",
-        "content":"# About me\n\nThis is a section where you get to talk about yourself. Show off your personality, interests, or childhood pictures.\n\nFor example, here are my hobbies:\n\n* Scuba diving\n* Hiking\n* Karaoke nights"
-      },
-      {
-        "__component":"sections.large-media",
-        "description":"My family last summer",
-        "media":null
-      },
-      {
-        "__component":"sections.rich-text",
-        "content":"Again, you can add as much content as you want here. People want to get to know you!\n\nYou can also write *italic* or **bold** text.\n\n> Wow this about section looks great\n>\n> -- A happy Strapi user\n"
-      }
-    ],
-    "seo":{
-      "title":"About me",
-      "description":"Me, my life, my hobbies, and a summary of what I do outside of work.",
-      "shareImage":null
-    }
-  },
   "global": {
-    "siteName":"Portfolio",
-    "contactEmail":"contact@email.com",
-    "siteLanguage":"en",
-    "socialNetworks":[
-      {
-        "title":"Twitter",
+    "metaTitleSuffix":"Strapi+Next",
+    "metadata":{
+      "metaTitle":"Strapi+Next starter for Corporate Sites",
+      "metaDescription":"Build you corporate site with Strapi and Next",
+      "twitterCardType":"summary",
+      "twitterUsername":"strapijs",
+      "shareImage":null
+    },
+    "notificationBanner":{
+      "text":"This page was built using the Strapi+Next starter for Corporate Sites.\n[View other Strapi starters](https://strapi.io/starters)",
+      "type":"info"
+    },
+    "navbar":{
+      "links":[
+        {
+          "url":"/pricing",
+          "newTab":false,
+          "text":"Pricing"
+        },
+        {
+          "url":"/contact",
+          "newTab":false,
+          "text":"Contact"
+        }
+      ],
+      "button":{
         "url":"#",
-        "icon":null
+        "newTab":false,
+        "text":"Sign up",
+        "type":"secondary"
       },
-      {
-        "title":"LinkedIn",
-        "url":"#",
-        "icon":null
-      },
-      {
-        "title":"Instagram",
-        "url":"#",
-        "icon":null
-      }
-    ],
+      "logo":null
+    },
+    "footer":{
+      "smallText":"© Copyright My Company™",
+      "columns":[
+        {
+          "title":"Product",
+          "links":[
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"Features"
+            },
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"Sign up"
+            }
+          ]
+        },
+        {
+          "title":"Legal",
+          "links":[
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"Privacy policy"
+            },
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"Terms & conditions"
+            }
+          ]
+        },
+        {
+          "title":"Company",
+          "links":[
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"Careers"
+            },
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"Team"
+            }
+          ]
+        },
+        {
+          "title":"Social",
+          "links":[
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"Twitter"
+            },
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"LinkedIn"
+            }
+          ]
+        }
+      ],
+      "logo":null
+    },
     "favicon":null
-  }
+  },
+  "pages": [
+    {
+      "slug":"",
+      "shortName":"Home",
+      "status":"published",
+      "metadata":{
+        "metaTitle":"Strapi+Next corporate site starter",
+        "metaDescription":"Build a fully editable site with Strapi and Next",
+        "twitterCardType":"summary",
+        "twitterUsername":null,
+        "shareImage":null
+      },
+      "contentSections":[
+        {
+          "__component":"sections.hero",
+          "title":"The best way to build your Corporate Site",
+          "label":"Strapi & Next starter",
+          "description":"Get started with your Strapi and Next buiness site in seconds.",
+          "smallTextWithLink":"Want to build your own from scratch? Tutorial coming soon",
+          "buttons":[
+            {
+              "url":"https://github.com/strapi/strapi-starter-next-corporate",
+              "newTab":false,
+              "text":"Get started",
+              "type":"primary"
+            },
+            {
+              "url":"https://github.com/strapi/strapi-starter-next-corporate",
+              "newTab":true,
+              "text":"See the code",
+              "type":"secondary"
+            }
+          ],
+          "picture":null
+        },
+        {
+          "__component":"sections.feature-rows-group",
+          "features":[
+            {
+              "title":"Let marketing teams build their pages",
+              "description":"Thanks to a pre-built list of UI sections, marketers can design exactly the pages they want.",
+              "link":{
+                "url":"#",
+                "newTab":false,
+                "text":"View the list of UI sections"
+              },
+              "media":null
+            },
+            {
+              "title":"Leave your developers alone",
+              "description":"You can publish, edit and delete pages without help from developers. Your technical team can finally focus on their tasks.",
+              "link":{
+                "url":"#",
+                "newTab":false,
+                "text":"View how to create a page"
+              },
+              "media":null
+            }
+          ]
+        },
+        {
+          "__component":"sections.feature-columns-group",
+          "features":[
+            {
+              "title":"Preview your changes",
+              "description":"Thanks to an integrated Preview Mode, you can visualize your pages before publishing them.",
+              "icon":null
+            },
+            {
+              "title":"Fully responsive",
+              "description":"This starter works well on all screens, whether it's mobile, tablet or desktop.",
+              "icon":null
+            },
+            {
+              "title":"Easy to customize",
+              "description":"We use Tailwind for styling. You can change your site's theme without digging through the code.",
+              "icon":null
+            }
+          ]
+        },
+        {
+          "__component":"sections.testimonials-group",
+          "title":"Your customer testimonials here",
+          "description":"This section is where you can showcase your customers. Insert quotes, and show the logos of companies who like your product",
+          "link":{
+            "url":"#",
+            "newTab":false,
+            "text":"All testimonials"
+          },
+          "logos":[
+            {
+              "title":"Strapi",
+              "logo":null
+            },
+            {
+              "title":"Strapi 2",
+              "logo":null
+            },
+            {
+              "title":"Strapi 3",
+              "logo":null
+            }
+          ],
+          "testimonials":[
+            {
+              "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+              "authorName":"Your Customer Name",
+              "authorTitle":"A happy customer",
+              "link":"#",
+              "logo":null,
+              "picture":null
+            }
+          ]
+        },
+        {
+          "__component":"sections.bottom-actions",
+          "title":"Start building your website",
+          "buttons":[
+            {
+              "url":"https://github.com/strapi/strapi-starter-next-corporate",
+              "newTab":false,
+              "text":"Get started",
+              "type":"primary"
+            },
+            {
+              "url":"https://github.com/strapi/strapi-starter-next-corporate",
+              "newTab":false,
+              "text":"See the code",
+              "type":"secondary"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug":"pricing",
+      "shortName":"Pricing",
+      "status":"published",
+      "metadata":{
+        "metaTitle":"Pricing",
+        "metaDescription":"The different plans",
+        "twitterCardType":"summary",
+        "twitterUsername":null,
+        "shareImage":null
+      },
+      "contentSections":[
+        {
+          "__component":"sections.pricing",
+          "title":"Clear pricing table",
+          "plans":[
+            {
+              "name":"Hobby",
+              "description":"Perfect for side projects",
+              "isRecommended":null,
+              "price":0,
+              "pricePeriod":"forever",
+              "features":[
+                {
+                  "name":"A cool feature"
+                },
+                {
+                  "name":"Another cool feature"
+                },
+                {
+                  "name":"Some other cool feature"
+                }
+              ]
+            },
+            {
+              "name":"Premium",
+              "description":"A more advanced plan for SMBs",
+              "isRecommended":true,
+              "price":20,
+              "pricePeriod":"per month",
+              "features":[
+                {
+                  "name":"The coolest feature"
+                },
+                {
+                  "name":"Nice feature"
+                },
+                {
+                  "name":"Fun feature"
+                }
+              ]
+            },
+            {
+              "name":"Enterprise",
+              "description":"For large companies needs",
+              "isRecommended":null,
+              "price":299,
+              "pricePeriod":"per month",
+              "features":[
+                {
+                  "name":"Amazing feature"
+                },
+                {
+                  "name":"Wow effect feature"
+                },
+                {
+                  "name":"Mesmerizing feature"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug":"secret",
+      "shortName":"Secret",
+      "status":"draft",
+      "metadata":{
+        "metaTitle":"Secret page",
+        "metaDescription":"Preview-only page",
+        "twitterCardType":"summary",
+        "twitterUsername":null,
+        "shareImage":null
+      },
+      "contentSections":[
+        {
+          "__component":"sections.rich-text",
+          "content":"## Secret page\n\nYou can only view this page in Preview Mode."
+        }
+      ]
+    },
+    {
+      "slug":"contact",
+      "shortName":"Contact",
+      "status":"published",
+      "metadata":{
+        "metaTitle":"Contact",
+        "metaDescription":"Get in touch with our team",
+        "twitterCardType":"summary",
+        "twitterUsername":null,
+        "shareImage":null
+      },
+      "contentSections":[
+        {
+          "__component":"sections.rich-text",
+          "content":"# Get in touch\n\n> This is an example of a page that relies almost entirely on the RichText section. It's useful for blog articles, or content-heavy pages like legal terms.\n\nWe'd love to hear from you.\n\n## Social media\n\n* [Twitter](#)\n* [Twitter](#)\n* [Twitter](#)\n\n## Postal address\n\n404 Headless Street\n__92210__ **Saint Cloud**, *France*\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+          "__component":"sections.bottom-actions",
+          "title":"Get in touch",
+          "buttons":[
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"Send an email",
+              "type":"primary"
+            },
+            {
+              "url":"#",
+              "newTab":false,
+              "text":"DM us on Twitter",
+              "type":"secondary"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

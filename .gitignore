@@ -187,3 +187,5 @@ $RECYCLE.BIN/
 # Custom
 
 .vscode
+build
+.tmp

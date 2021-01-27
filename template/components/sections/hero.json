@@ -30,7 +30,7 @@
     "buttons": {
       "type": "component",
       "repeatable": true,
-      "component": "links.button"
+      "component": "links.button-link"
     }
   }
 }

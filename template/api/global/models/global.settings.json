@@ -6,7 +6,8 @@
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+     "draftAndPublish": true
   },
   "attributes": {
     "metadata": {

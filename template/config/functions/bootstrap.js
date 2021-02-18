@@ -1,17 +1,17 @@
-const fs = require('fs');
+const fs = require("fs");
 const path = require("path");
-const { pages, global } = require('../../data/data.json');
+const { pages, global, leadFormSubmissions } = require("../../data/data.json");
 
 async function isFirstRun() {
   const pluginStore = strapi.store({
     environment: strapi.config.environment,
     type: "type",
-    name: "setup"
+    name: "setup",
   });
   const initHasRun = await pluginStore.get({ key: "initHasRun" });
   await pluginStore.set({ key: "initHasRun", value: true });
   return !initHasRun;
-};
+}
 
 async function setPublicPermissions(newPermissions) {
   // Find the ID of the public role
@@ -41,7 +41,7 @@ async function setPublicPermissions(newPermissions) {
       // Enable the selected permissions
       return strapi
         .query("permission", "users-permissions")
-        .update({ id: permission.id }, { enabled: true })
+        .update({ id: permission.id }, { enabled: true });
     });
   await Promise.all(updatePromises);
 }
@@ -50,7 +50,7 @@ function getFileSizeInBytes(filePath) {
   const stats = fs.statSync(filePath);
   const fileSizeInBytes = stats["size"];
   return fileSizeInBytes;
-};
+}
 
 function getFileData(fileName) {
   const filePath = `./data/uploads/${fileName}`;
@@ -58,14 +58,14 @@ function getFileData(fileName) {
   // Parse the file metadata
   const size = getFileSizeInBytes(filePath);
   const ext = fileName.split(".").pop();
-  const mimeType = `image/${ext === 'svg' ? 'svg+xml' : ext}`;
+  const mimeType = `image/${ext === "svg" ? "svg+xml" : ext}`;
 
   return {
     path: filePath,
     name: fileName,
     size,
     type: mimeType,
-  }
+  };
 }
 
 // Create an entry and attach files if there are any
@@ -74,7 +74,7 @@ async function createEntry(model, entry, files) {
     const createdEntry = await strapi.query(model).create(entry);
     if (files) {
       await strapi.entityService.uploadFiles(createdEntry, files, {
-        model
+        model,
       });
     }
   } catch (e) {
@@ -83,92 +83,111 @@ async function createEntry(model, entry, files) {
 }
 
 async function importPages() {
-  const getPageCover = slug => {
+  const getPageCover = (slug) => {
     switch (slug) {
-      case '':
-        return getFileData('undraw-content-team.png');
+      case "":
+        return getFileData("undraw-content-team.png");
       default:
         return null;
-    };
-  }
+    }
+  };
 
   return pages.map(async (page) => {
     const files = {};
     const shareImage = getPageCover(page.slug);
     if (shareImage) {
-      files['metadata.shareImage'] = shareImage;
+      files["metadata.shareImage"] = shareImage;
     }
     // Check if dynamic zone has attached files
     page.contentSections.forEach((section, index) => {
-      if (section.__component === 'sections.hero') {
-        files[`contentSections.${index}.picture`] = getFileData('undraw-content-team.svg');
-      } else if (section.__component === 'sections.feature-rows-group') {
+      if (section.__component === "sections.hero") {
+        files[`contentSections.${index}.picture`] = getFileData(
+          "undraw-content-team.svg"
+        );
+      } else if (section.__component === "sections.feature-rows-group") {
         const getFeatureMedia = (featureIndex) => {
           switch (featureIndex) {
             case 0:
-              return getFileData('undraw-design-page.svg');
+              return getFileData("undraw-design-page.svg");
             case 1:
-              return getFileData('undraw-create-page.svg');
+              return getFileData("undraw-create-page.svg");
             default:
               return null;
           }
         };
         section.features.forEach((feature, featureIndex) => {
-          files[`contentSections.${index}.features.${featureIndex}.media`] = getFeatureMedia(featureIndex);
+          files[
+            `contentSections.${index}.features.${featureIndex}.media`
+          ] = getFeatureMedia(featureIndex);
         });
-      } else if (section.__component === 'sections.feature-columns-group') {
+      } else if (section.__component === "sections.feature-columns-group") {
         const getFeatureMedia = (featureIndex) => {
           switch (featureIndex) {
             case 0:
-              return getFileData('preview.svg');
+              return getFileData("preview.svg");
             case 1:
-              return getFileData('devices.svg');
+              return getFileData("devices.svg");
             case 2:
-              return getFileData('palette.svg');
+              return getFileData("palette.svg");
             default:
               return null;
           }
         };
         section.features.forEach((feature, featureIndex) => {
-          files[`contentSections.${index}.features.${featureIndex}.icon`] = getFeatureMedia(featureIndex);
+          files[
+            `contentSections.${index}.features.${featureIndex}.icon`
+          ] = getFeatureMedia(featureIndex);
         });
-      } else if (section.__component === 'sections.testimonials-group') {
+      } else if (section.__component === "sections.testimonials-group") {
         section.logos.forEach((logo, logoIndex) => {
-          files[`contentSections.${index}.logos.${logoIndex}.logo`] = getFileData('logo.png');
+          files[
+            `contentSections.${index}.logos.${logoIndex}.logo`
+          ] = getFileData("logo.png");
         });
         section.testimonials.forEach((testimonial, testimonialIndex) => {
-          files[`contentSections.${index}.testimonials.${testimonialIndex}.logo`] = getFileData('logo.png');
-          files[`contentSections.${index}.testimonials.${testimonialIndex}.picture`] = getFileData('user.png');
+          files[
+            `contentSections.${index}.testimonials.${testimonialIndex}.logo`
+          ] = getFileData("logo.png");
+          files[
+            `contentSections.${index}.testimonials.${testimonialIndex}.picture`
+          ] = getFileData("user.png");
         });
       }
     });
-    await createEntry('page', page, files);
+    await createEntry("page", page, files);
   });
 }
 
 async function importGlobal() {
   // Add images
   const files = {
-    favicon: getFileData('favicon.png'),
-    'metadata.shareImage': getFileData('undraw-content-team.png'),
-    'navbar.logo': getFileData('logo.png'),
-    'footer.logo': getFileData('logo.png'),
+    favicon: getFileData("favicon.png"),
+    "metadata.shareImage": getFileData("undraw-content-team.png"),
+    "navbar.logo": getFileData("logo.png"),
+    "footer.logo": getFileData("logo.png"),
   };
   // Create entry
-  await createEntry('global', global, files);
+  await createEntry("global", global, files);
+}
+
+async function importLeadFormSubmissionData() {
+  leadFormSubmissions.forEach(async (submission) => {
+    await createEntry("lead-form-submissions", submission);
+  });
 }
 
 async function importSeedData() {
   // Allow read of application content types
   await setPublicPermissions({
-    global: ['find'],
-    page: ['find', 'findone'],
+    global: ["find"],
+    page: ["find", "findone"],
   });
-  
+
   // Create all entries
   await importGlobal();
   await importPages();
-};
+  await importLeadFormSubmissionData();
+}
 
 module.exports = async () => {
   const shouldImportSeedData = await isFirstRun();
@@ -176,7 +195,7 @@ module.exports = async () => {
     try {
       await importSeedData();
     } catch (error) {
-      console.log('Could not import seed data');
+      console.log("Could not import seed data");
       console.error(error);
     }
   }

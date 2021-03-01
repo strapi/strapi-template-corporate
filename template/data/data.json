@@ -1,15 +1,15 @@
 {
   "global": {
-    "metaTitleSuffix":"Strapi+Next",
+    "metaTitleSuffix":"Strapi Corporate",
     "metadata":{
-      "metaTitle":"Strapi+Next starter for Corporate Sites",
-      "metaDescription":"Build you corporate site with Strapi and Next",
+      "metaTitle":"Strapi starter for Corporate Sites",
+      "metaDescription":"Build your corporate site with Strapi",
       "twitterCardType":"summary",
       "twitterUsername":"strapijs",
       "shareImage":null
     },
     "notificationBanner":{
-      "text":"This page was built using the Strapi+Next starter for Corporate Sites.\n[View other Strapi starters](https://strapi.io/starters)",
+      "text":"This page was built using the Strapi starter for Corporate Sites.\n[View other Strapi starters](https://strapi.io/starters)",
       "type":"info"
     },
     "navbar":{
@@ -124,8 +124,8 @@
       "shortName":"Home",
       "status":"published",
       "metadata":{
-        "metaTitle":"Strapi+Next corporate site starter",
-        "metaDescription":"Build a fully editable site with Strapi and Next",
+        "metaTitle":"Strapi corporate site starter",
+        "metaDescription":"Build a fully editable site with Strapi",
         "twitterCardType":"summary",
         "twitterUsername":null,
         "shareImage":null
@@ -134,18 +134,18 @@
         {
           "__component":"sections.hero",
           "title":"The best way to build your Corporate Site",
-          "label":"Strapi & Next starter",
-          "description":"Get started with your Strapi and Next buiness site in seconds.",
+          "label":"New Strapi starter",
+          "description":"Get started with your Strapi business website in seconds.",
           "smallTextWithLink":"Want to build your own from scratch? Tutorial coming soon",
           "buttons":[
             {
-              "url":"https://github.com/strapi/strapi-starter-next-corporate",
+              "url":"https://github.com/strapi/strapi-template-corporate",
               "newTab":false,
               "text":"Get started",
               "type":"primary"
             },
             {
-              "url":"https://github.com/strapi/strapi-starter-next-corporate",
+              "url":"https://github.com/strapi/strapi-template-corporate",
               "newTab":true,
               "text":"See the code",
               "type":"secondary"
@@ -248,13 +248,13 @@
           "title":"Start building your website",
           "buttons":[
             {
-              "url":"https://github.com/strapi/strapi-starter-next-corporate",
+              "url":"https://github.com/strapi/strapi-template-corporate",
               "newTab":false,
               "text":"Get started",
               "type":"primary"
             },
             {
-              "url":"https://github.com/strapi/strapi-starter-next-corporate",
+              "url":"https://github.com/strapi/strapi-template-corporate",
               "newTab":false,
               "text":"See the code",
               "type":"secondary"

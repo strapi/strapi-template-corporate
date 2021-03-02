@@ -17,3 +17,4 @@ npx create-strapi-app my-app-name --template https://github.com/strapi/strapi-te
 This template is used by the following starters:
 
 * [Strapi Starter Next Corporate Site](https://github.com/strapi/strapi-starter-next-corporate)
+* [Strapi Starter Gatsby Corporate Site](https://github.com/strapi/strapi-starter-gatsby-corporate)

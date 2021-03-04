@@ -181,6 +181,7 @@ async function importSeedData() {
   await setPublicPermissions({
     global: ["find"],
     page: ["find", "findone"],
+    'lead-form-submissions': ["create"],
   });
 
   // Create all entries

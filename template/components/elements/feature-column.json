@@ -2,12 +2,14 @@
   "collectionName": "components_slices_feature_columns",
   "info": {
     "name": "FeatureColumn",
-    "icon": "align-center"
+    "icon": "align-center",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
       "type": "text"
@@ -19,7 +21,7 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true
     }
   }
 }

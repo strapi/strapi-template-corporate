@@ -76,6 +76,14 @@ async function createEntry(model, entry, files) {
       await strapi.entityService.uploadFiles(createdEntry, files, {
         model,
       });
+      const uploads = await strapi.query('file', 'upload').find();
+      const uploadsWithInfo = uploads.map(upload => {
+        const [alternativeText] = upload.name.split(".")
+        return strapi.plugins.upload.services.upload.updateFileInfo(upload.id, {
+          alternativeText
+        })
+      })
+      await Promise.all(uploadsWithInfo)
     }
   } catch (e) {
     console.log(e);
@@ -154,6 +162,7 @@ async function importPages() {
         });
       }
     });
+
     await createEntry("page", page, files);
   });
 }

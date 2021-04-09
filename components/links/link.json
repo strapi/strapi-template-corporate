@@ -2,19 +2,22 @@
   "collectionName": "components_links_links",
   "info": {
     "name": "Link",
-    "icon": "link"
+    "icon": "link",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "url": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "newTab": {
       "type": "boolean",
       "default": false
     },
     "text": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

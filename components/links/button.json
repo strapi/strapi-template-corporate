@@ -1,18 +1,12 @@
 {
-  "collectionName": "components_links_buttons",
+  "collectionName": "components_links_simple_buttons",
   "info": {
     "name": "Button",
-    "icon": "fingerprint"
+    "icon": "fingerprint",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "url": {
-      "type": "string"
-    },
-    "newTab": {
-      "type": "boolean",
-      "default": false
-    },
     "text": {
       "type": "string"
     },

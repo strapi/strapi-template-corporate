@@ -1,0 +1,1361 @@
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type Global {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  metadata: ComponentMetaMetadata
+  metaTitleSuffix: String!
+  favicon: UploadFile
+  notificationBanner: ComponentElementsNotificationBanner
+  navbar: ComponentLayoutNavbar
+  footer: ComponentLayoutFooter
+}
+
+input GlobalInput {
+  metadata: ComponentMetaMetadatumInput
+  metaTitleSuffix: String!
+  favicon: ID
+  notificationBanner: ComponentElementsNotificationBannerInput
+  navbar: ComponentLayoutNavbarInput
+  footer: ComponentLayoutFooterInput
+  created_by: ID
+  updated_by: ID
+}
+
+input editGlobalInput {
+  metadata: editComponentMetaMetadatumInput
+  metaTitleSuffix: String
+  favicon: ID
+  notificationBanner: editComponentElementsNotificationBannerInput
+  navbar: editComponentLayoutNavbarInput
+  footer: editComponentLayoutFooterInput
+  created_by: ID
+  updated_by: ID
+}
+
+input updateGlobalInput {
+  data: editGlobalInput
+}
+
+type updateGlobalPayload {
+  global: Global
+}
+
+type deleteGlobalPayload {
+  global: Global
+}
+
+enum ENUM_LEADFORMSUBMISSIONS_STATUS {
+  seen
+  contacted
+  ignored
+}
+
+type LeadFormSubmissions {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  email: String
+  status: ENUM_LEADFORMSUBMISSIONS_STATUS
+  location: String
+}
+
+type LeadFormSubmissionsConnection {
+  values: [LeadFormSubmissions]
+  groupBy: LeadFormSubmissionsGroupBy
+  aggregate: LeadFormSubmissionsAggregator
+}
+
+type LeadFormSubmissionsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type LeadFormSubmissionsGroupBy {
+  id: [LeadFormSubmissionsConnectionId]
+  created_at: [LeadFormSubmissionsConnectionCreated_at]
+  updated_at: [LeadFormSubmissionsConnectionUpdated_at]
+  email: [LeadFormSubmissionsConnectionEmail]
+  status: [LeadFormSubmissionsConnectionStatus]
+  location: [LeadFormSubmissionsConnectionLocation]
+}
+
+type LeadFormSubmissionsConnectionId {
+  key: ID
+  connection: LeadFormSubmissionsConnection
+}
+
+type LeadFormSubmissionsConnectionCreated_at {
+  key: DateTime
+  connection: LeadFormSubmissionsConnection
+}
+
+type LeadFormSubmissionsConnectionUpdated_at {
+  key: DateTime
+  connection: LeadFormSubmissionsConnection
+}
+
+type LeadFormSubmissionsConnectionEmail {
+  key: String
+  connection: LeadFormSubmissionsConnection
+}
+
+type LeadFormSubmissionsConnectionStatus {
+  key: String
+  connection: LeadFormSubmissionsConnection
+}
+
+type LeadFormSubmissionsConnectionLocation {
+  key: String
+  connection: LeadFormSubmissionsConnection
+}
+
+input LeadFormSubmissionInput {
+  email: String
+  status: ENUM_LEADFORMSUBMISSIONS_STATUS
+  location: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLeadFormSubmissionInput {
+  email: String
+  status: ENUM_LEADFORMSUBMISSIONS_STATUS
+  location: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createLeadFormSubmissionInput {
+  data: LeadFormSubmissionInput
+}
+
+type createLeadFormSubmissionPayload {
+  leadFormSubmission: LeadFormSubmissions
+}
+
+input updateLeadFormSubmissionInput {
+  where: InputID
+  data: editLeadFormSubmissionInput
+}
+
+type updateLeadFormSubmissionPayload {
+  leadFormSubmission: LeadFormSubmissions
+}
+
+input deleteLeadFormSubmissionInput {
+  where: InputID
+}
+
+type deleteLeadFormSubmissionPayload {
+  leadFormSubmission: LeadFormSubmissions
+}
+
+enum ENUM_PAGE_STATUS {
+  published
+  draft
+}
+
+union PageContentSectionsDynamicZone = ComponentSectionsHero | ComponentSectionsBottomActions | ComponentSectionsFeatureColumnsGroup | ComponentSectionsFeatureRowsGroup | ComponentSectionsTestimonialsGroup | ComponentSectionsLargeVideo | ComponentSectionsRichText | ComponentSectionsPricing | ComponentSectionsLeadForm
+
+"""Input type for dynamic zone contentSections of Page"""
+scalar PageContentSectionsDynamicZoneInput
+
+type Page {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  slug: String
+  shortName: String
+  metadata: ComponentMetaMetadata
+  contentSections: [PageContentSectionsDynamicZone]
+  status: ENUM_PAGE_STATUS!
+}
+
+type PageConnection {
+  values: [Page]
+  groupBy: PageGroupBy
+  aggregate: PageAggregator
+}
+
+type PageAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PageGroupBy {
+  id: [PageConnectionId]
+  created_at: [PageConnectionCreated_at]
+  updated_at: [PageConnectionUpdated_at]
+  slug: [PageConnectionSlug]
+  shortName: [PageConnectionShortName]
+  metadata: [PageConnectionMetadata]
+  status: [PageConnectionStatus]
+}
+
+type PageConnectionId {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionCreated_at {
+  key: DateTime
+  connection: PageConnection
+}
+
+type PageConnectionUpdated_at {
+  key: DateTime
+  connection: PageConnection
+}
+
+type PageConnectionSlug {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionShortName {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionMetadata {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionStatus {
+  key: String
+  connection: PageConnection
+}
+
+input PageInput {
+  slug: String
+  shortName: String
+  metadata: ComponentMetaMetadatumInput!
+  contentSections: [PageContentSectionsDynamicZoneInput!]
+  status: ENUM_PAGE_STATUS
+  created_by: ID
+  updated_by: ID
+}
+
+input editPageInput {
+  slug: String
+  shortName: String
+  metadata: editComponentMetaMetadatumInput
+  contentSections: [PageContentSectionsDynamicZoneInput!]
+  status: ENUM_PAGE_STATUS
+  created_by: ID
+  updated_by: ID
+}
+
+input createPageInput {
+  data: PageInput
+}
+
+type createPagePayload {
+  page: Page
+}
+
+input updatePageInput {
+  where: InputID
+  data: editPageInput
+}
+
+type updatePagePayload {
+  page: Page
+}
+
+input deletePageInput {
+  where: InputID
+}
+
+type deletePagePayload {
+  page: Page
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
+type ComponentElementsFeatureColumn {
+  id: ID!
+  title: String!
+  description: String
+  icon: UploadFile
+}
+
+input ComponentElementsFeatureColumnInput {
+  title: String!
+  description: String
+  icon: ID
+}
+
+input editComponentElementsFeatureColumnInput {
+  id: ID
+  title: String
+  description: String
+  icon: ID
+}
+
+type ComponentElementsFeatureRow {
+  id: ID!
+  title: String!
+  description: String
+  media: UploadFile
+  link: ComponentLinksLink
+}
+
+input ComponentElementsFeatureRowInput {
+  title: String!
+  description: String
+  media: ID
+  link: ComponentLinksLinkInput
+}
+
+input editComponentElementsFeatureRowInput {
+  id: ID
+  title: String
+  description: String
+  media: ID
+  link: editComponentLinksLinkInput
+}
+
+type ComponentElementsFeature {
+  id: ID!
+  name: String
+}
+
+input ComponentElementsFeatureInput {
+  name: String
+}
+
+input editComponentElementsFeatureInput {
+  id: ID
+  name: String
+}
+
+type ComponentElementsFooterSection {
+  id: ID!
+  title: String
+  links: [ComponentLinksLink]
+}
+
+input ComponentElementsFooterSectionInput {
+  title: String
+  links: [ComponentLinksLinkInput]
+}
+
+input editComponentElementsFooterSectionInput {
+  id: ID
+  title: String
+  links: [editComponentLinksLinkInput]
+}
+
+type ComponentElementsLogos {
+  id: ID!
+  title: String
+  logo: UploadFile
+}
+
+input ComponentElementsLogoInput {
+  title: String
+  logo: ID
+}
+
+input editComponentElementsLogoInput {
+  id: ID
+  title: String
+  logo: ID
+}
+
+enum ENUM_COMPONENTELEMENTSNOTIFICATIONBANNER_TYPE {
+  alert
+  info
+  warning
+}
+
+type ComponentElementsNotificationBanner {
+  id: ID!
+  text: String
+  type: ENUM_COMPONENTELEMENTSNOTIFICATIONBANNER_TYPE!
+}
+
+input ComponentElementsNotificationBannerInput {
+  text: String
+  type: ENUM_COMPONENTELEMENTSNOTIFICATIONBANNER_TYPE!
+}
+
+input editComponentElementsNotificationBannerInput {
+  id: ID
+  text: String
+  type: ENUM_COMPONENTELEMENTSNOTIFICATIONBANNER_TYPE
+}
+
+type ComponentElementsPlan {
+  id: ID!
+  name: String
+  description: String
+  features: [ComponentElementsFeature]
+  isRecommended: Boolean
+  price: Float
+  pricePeriod: String
+}
+
+input ComponentElementsPlanInput {
+  name: String
+  description: String
+  features: [ComponentElementsFeatureInput]
+  isRecommended: Boolean
+  price: Float
+  pricePeriod: String
+}
+
+input editComponentElementsPlanInput {
+  id: ID
+  name: String
+  description: String
+  features: [editComponentElementsFeatureInput]
+  isRecommended: Boolean
+  price: Float
+  pricePeriod: String
+}
+
+type ComponentElementsTestimonial {
+  id: ID!
+  logo: UploadFile
+  picture: UploadFile
+  text: String
+  authorName: String
+  authorTitle: String
+  link: String
+}
+
+input ComponentElementsTestimonialInput {
+  logo: ID
+  picture: ID
+  text: String
+  authorName: String
+  authorTitle: String
+  link: String
+}
+
+input editComponentElementsTestimonialInput {
+  id: ID
+  logo: ID
+  picture: ID
+  text: String
+  authorName: String
+  authorTitle: String
+  link: String
+}
+
+type ComponentLayoutFooter {
+  id: ID!
+  logo: UploadFile
+  columns: [ComponentElementsFooterSection]
+  smallText: String
+}
+
+input ComponentLayoutFooterInput {
+  logo: ID
+  columns: [ComponentElementsFooterSectionInput]
+  smallText: String
+}
+
+input editComponentLayoutFooterInput {
+  id: ID
+  logo: ID
+  columns: [editComponentElementsFooterSectionInput]
+  smallText: String
+}
+
+type ComponentLayoutNavbar {
+  id: ID!
+  logo: UploadFile
+  links: [ComponentLinksLink]
+  button: ComponentLinksButtonLink
+}
+
+input ComponentLayoutNavbarInput {
+  logo: ID
+  links: [ComponentLinksLinkInput]
+  button: ComponentLinksButtonLinkInput
+}
+
+input editComponentLayoutNavbarInput {
+  id: ID
+  logo: ID
+  links: [editComponentLinksLinkInput]
+  button: editComponentLinksButtonLinkInput
+}
+
+enum ENUM_COMPONENTLINKSBUTTONLINK_TYPE {
+  primary
+  secondary
+}
+
+type ComponentLinksButtonLink {
+  id: ID!
+  url: String
+  newTab: Boolean
+  text: String
+  type: ENUM_COMPONENTLINKSBUTTONLINK_TYPE
+}
+
+input ComponentLinksButtonLinkInput {
+  url: String
+  newTab: Boolean
+  text: String
+  type: ENUM_COMPONENTLINKSBUTTONLINK_TYPE
+}
+
+input editComponentLinksButtonLinkInput {
+  id: ID
+  url: String
+  newTab: Boolean
+  text: String
+  type: ENUM_COMPONENTLINKSBUTTONLINK_TYPE
+}
+
+enum ENUM_COMPONENTLINKSBUTTON_TYPE {
+  primary
+  secondary
+}
+
+type ComponentLinksButton {
+  id: ID!
+  text: String
+  type: ENUM_COMPONENTLINKSBUTTON_TYPE
+}
+
+input ComponentLinksButtonInput {
+  text: String
+  type: ENUM_COMPONENTLINKSBUTTON_TYPE
+}
+
+input editComponentLinksButtonInput {
+  id: ID
+  text: String
+  type: ENUM_COMPONENTLINKSBUTTON_TYPE
+}
+
+type ComponentLinksLink {
+  id: ID!
+  url: String!
+  newTab: Boolean
+  text: String!
+}
+
+input ComponentLinksLinkInput {
+  url: String!
+  newTab: Boolean
+  text: String!
+}
+
+input editComponentLinksLinkInput {
+  id: ID
+  url: String
+  newTab: Boolean
+  text: String
+}
+
+enum ENUM_COMPONENTMETAMETADATA_TWITTERCARDTYPE {
+  summary
+  summary_large_image
+  app
+  player
+}
+
+type ComponentMetaMetadata {
+  id: ID!
+  metaTitle: String!
+  metaDescription: String!
+  shareImage: UploadFile
+  twitterCardType: ENUM_COMPONENTMETAMETADATA_TWITTERCARDTYPE
+  twitterUsername: String
+}
+
+input ComponentMetaMetadatumInput {
+  metaTitle: String!
+  metaDescription: String!
+  shareImage: ID
+  twitterCardType: ENUM_COMPONENTMETAMETADATA_TWITTERCARDTYPE
+  twitterUsername: String
+}
+
+input editComponentMetaMetadatumInput {
+  id: ID
+  metaTitle: String
+  metaDescription: String
+  shareImage: ID
+  twitterCardType: ENUM_COMPONENTMETAMETADATA_TWITTERCARDTYPE
+  twitterUsername: String
+}
+
+type ComponentSectionsBottomActions {
+  id: ID!
+  title: String
+  buttons: [ComponentLinksButtonLink]
+}
+
+input ComponentSectionsBottomActionInput {
+  title: String
+  buttons: [ComponentLinksButtonLinkInput]
+}
+
+input editComponentSectionsBottomActionInput {
+  id: ID
+  title: String
+  buttons: [editComponentLinksButtonLinkInput]
+}
+
+type ComponentSectionsFeatureColumnsGroup {
+  id: ID!
+  features: [ComponentElementsFeatureColumn]
+}
+
+input ComponentSectionsFeatureColumnsGroupInput {
+  features: [ComponentElementsFeatureColumnInput]
+}
+
+input editComponentSectionsFeatureColumnsGroupInput {
+  id: ID
+  features: [editComponentElementsFeatureColumnInput]
+}
+
+type ComponentSectionsFeatureRowsGroup {
+  id: ID!
+  features: [ComponentElementsFeatureRow]
+}
+
+input ComponentSectionsFeatureRowsGroupInput {
+  features: [ComponentElementsFeatureRowInput]
+}
+
+input editComponentSectionsFeatureRowsGroupInput {
+  id: ID
+  features: [editComponentElementsFeatureRowInput]
+}
+
+type ComponentSectionsHero {
+  id: ID!
+  title: String
+  label: String
+  description: String
+  picture: UploadFile
+  smallTextWithLink: String
+  buttons: [ComponentLinksButtonLink]
+}
+
+input ComponentSectionsHeroInput {
+  title: String
+  label: String
+  description: String
+  picture: ID
+  smallTextWithLink: String
+  buttons: [ComponentLinksButtonLinkInput]
+}
+
+input editComponentSectionsHeroInput {
+  id: ID
+  title: String
+  label: String
+  description: String
+  picture: ID
+  smallTextWithLink: String
+  buttons: [editComponentLinksButtonLinkInput]
+}
+
+type ComponentSectionsLargeVideo {
+  id: ID!
+  title: String
+  description: String
+  video: UploadFile
+  poster: UploadFile
+}
+
+input ComponentSectionsLargeVideoInput {
+  title: String
+  description: String
+  video: ID
+  poster: ID
+}
+
+input editComponentSectionsLargeVideoInput {
+  id: ID
+  title: String
+  description: String
+  video: ID
+  poster: ID
+}
+
+type ComponentSectionsLeadForm {
+  id: ID!
+  title: String
+  emailPlaceholder: String
+  submitButton: ComponentLinksButton
+  location: String
+}
+
+input ComponentSectionsLeadFormInput {
+  title: String
+  emailPlaceholder: String
+  submitButton: ComponentLinksButtonInput
+  location: String
+}
+
+input editComponentSectionsLeadFormInput {
+  id: ID
+  title: String
+  emailPlaceholder: String
+  submitButton: editComponentLinksButtonInput
+  location: String
+}
+
+type ComponentSectionsPricing {
+  id: ID!
+  title: String
+  plans: [ComponentElementsPlan]
+}
+
+input ComponentSectionsPricingInput {
+  title: String
+  plans: [ComponentElementsPlanInput]
+}
+
+input editComponentSectionsPricingInput {
+  id: ID
+  title: String
+  plans: [editComponentElementsPlanInput]
+}
+
+type ComponentSectionsRichText {
+  id: ID!
+  content: String
+}
+
+input ComponentSectionsRichTextInput {
+  content: String
+}
+
+input editComponentSectionsRichTextInput {
+  id: ID
+  content: String
+}
+
+type ComponentSectionsTestimonialsGroup {
+  id: ID!
+  title: String
+  description: String
+  link: ComponentLinksLink
+  logos: [ComponentElementsLogos]
+  testimonials: [ComponentElementsTestimonial]
+}
+
+input ComponentSectionsTestimonialsGroupInput {
+  title: String
+  description: String
+  link: ComponentLinksLinkInput
+  logos: [ComponentElementsLogoInput]
+  testimonials: [ComponentElementsTestimonialInput]
+}
+
+input editComponentSectionsTestimonialsGroupInput {
+  id: ID
+  title: String
+  description: String
+  link: editComponentLinksLinkInput
+  logos: [editComponentElementsLogoInput]
+  testimonials: [editComponentElementsTestimonialInput]
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Global | updateGlobalPayload | deleteGlobalPayload | LeadFormSubmissions | LeadFormSubmissionsConnection | LeadFormSubmissionsAggregator | LeadFormSubmissionsGroupBy | LeadFormSubmissionsConnectionId | LeadFormSubmissionsConnectionCreated_at | LeadFormSubmissionsConnectionUpdated_at | LeadFormSubmissionsConnectionEmail | LeadFormSubmissionsConnectionStatus | LeadFormSubmissionsConnectionLocation | createLeadFormSubmissionPayload | updateLeadFormSubmissionPayload | deleteLeadFormSubmissionPayload | Page | PageConnection | PageAggregator | PageGroupBy | PageConnectionId | PageConnectionCreated_at | PageConnectionUpdated_at | PageConnectionSlug | PageConnectionShortName | PageConnectionMetadata | PageConnectionStatus | createPagePayload | updatePagePayload | deletePagePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | ComponentElementsFeatureColumn | ComponentElementsFeatureRow | ComponentElementsFeature | ComponentElementsFooterSection | ComponentElementsLogos | ComponentElementsNotificationBanner | ComponentElementsPlan | ComponentElementsTestimonial | ComponentLayoutFooter | ComponentLayoutNavbar | ComponentLinksButtonLink | ComponentLinksButton | ComponentLinksLink | ComponentMetaMetadata | ComponentSectionsBottomActions | ComponentSectionsFeatureColumnsGroup | ComponentSectionsFeatureRowsGroup | ComponentSectionsHero | ComponentSectionsLargeVideo | ComponentSectionsLeadForm | ComponentSectionsPricing | ComponentSectionsRichText | ComponentSectionsTestimonialsGroup
+
+input InputID {
+  id: ID!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type AdminUser {
+  id: ID!
+  username: String
+  firstname: String!
+  lastname: String!
+}
+
+type Query {
+  global(publicationState: PublicationState): Global
+  leadFormSubmission(id: ID!, publicationState: PublicationState): LeadFormSubmissions
+  leadFormSubmissions(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [LeadFormSubmissions]
+  leadFormSubmissionsConnection(sort: String, limit: Int, start: Int, where: JSON): LeadFormSubmissionsConnection
+  page(id: ID!, publicationState: PublicationState): Page
+  pages(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Page]
+  pagesConnection(sort: String, limit: Int, start: Int, where: JSON): PageConnection
+  role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  me: UsersPermissionsMe
+}
+
+type Mutation {
+  updateGlobal(input: updateGlobalInput): updateGlobalPayload
+  deleteGlobal: deleteGlobalPayload
+  createLeadFormSubmission(input: createLeadFormSubmissionInput): createLeadFormSubmissionPayload
+  updateLeadFormSubmission(input: updateLeadFormSubmissionInput): updateLeadFormSubmissionPayload
+  deleteLeadFormSubmission(input: deleteLeadFormSubmissionInput): deleteLeadFormSubmissionPayload
+  createPage(input: createPageInput): createPagePayload
+  updatePage(input: updatePageInput): updatePagePayload
+  deletePage(input: deletePageInput): deletePagePayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

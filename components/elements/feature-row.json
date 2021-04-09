@@ -2,12 +2,14 @@
   "collectionName": "components_slices_feature_rows",
   "info": {
     "name": "FeatureRow",
-    "icon": "arrows-alt-h"
+    "icon": "arrows-alt-h",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
       "type": "text"
@@ -20,7 +22,7 @@
         "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true
     },
     "link": {
       "type": "component",

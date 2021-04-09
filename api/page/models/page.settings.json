@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "pages",
   "info": {
-    "name": "Page"
+    "name": "Page",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "slug": {
@@ -33,7 +35,8 @@
         "sections.testimonials-group",
         "sections.large-video",
         "sections.rich-text",
-        "sections.pricing"
+        "sections.pricing",
+        "sections.lead-form"
       ]
     },
     "status": {

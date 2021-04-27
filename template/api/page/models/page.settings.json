@@ -10,6 +10,11 @@
     "timestamps": true,
     "draftAndPublish": false
   },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "slug": {
       "type": "uid",
@@ -17,13 +22,23 @@
       "targetField": "shortName"
     },
     "shortName": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "metadata": {
       "type": "component",
       "repeatable": false,
       "component": "meta.metadata",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "contentSections": {
       "type": "dynamiczone",
@@ -37,7 +52,12 @@
         "sections.rich-text",
         "sections.pricing",
         "sections.lead-form"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "status": {
       "type": "enumeration",
@@ -46,7 +66,12 @@
         "draft"
       ],
       "default": "draft",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

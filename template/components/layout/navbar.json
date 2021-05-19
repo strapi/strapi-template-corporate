@@ -18,9 +18,13 @@
       "component": "links.button-link"
     },
     "logo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "links.logo"
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
     }
   }
 }

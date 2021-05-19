@@ -18,12 +18,12 @@
     "navbar": {
       "links": [
         {
-          "url": "/tarifs",
+          "url": "/pricing",
           "newTab": false,
           "text": "tarifs"
         },
         {
-          "url": "/nous-contacter",
+          "url": "/contact",
           "newTab": false,
           "text": "nous contacter"
         }
@@ -34,13 +34,10 @@
         "text": "S'inscrire",
         "type": "secondary"
       },
-      "logo" : {
-        "image": null,
-        "url": "fr"
-      }
+      "logo" : null
     },
     "footer": {
-      "smallText": "© Copyright My Company™",
+      "smallText": "© Copyright Mon Entreprise™",
       "columns": [
         {
           "title": "Produit",
@@ -48,7 +45,7 @@
             {
               "url": "#",
               "newTab": false,
-              "text": "Features"
+              "text": "Fonctionnalités"
             },
             {
               "url": "#",
@@ -73,7 +70,7 @@
           ]
         },
         {
-          "title": "Company",
+          "title": "Entreprise",
           "links": [
             {
               "url": "#",
@@ -83,12 +80,12 @@
             {
               "url": "#",
               "newTab": false,
-              "text": "L'Equipe"
+              "text": "L'équipe"
             }
           ]
         },
         {
-          "title": "Réseau Sociale",
+          "title": "Réseaux sociaux",
           "links": [
             {
               "url": "#",

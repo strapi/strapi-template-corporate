@@ -16,11 +16,6 @@
     }
   },
   "attributes": {
-    "slug": {
-      "type": "uid",
-      "required": false,
-      "targetField": "shortName"
-    },
     "shortName": {
       "type": "string",
       "pluginOptions": {
@@ -72,6 +67,15 @@
           "localized": true
         }
       }
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "regex": "^[a-zA-Z/-]+$"
     }
   }
 }

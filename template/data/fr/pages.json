@@ -2,7 +2,7 @@
   "pagesFR": [
     {
       "id": 5,
-      "slug": "fr",
+      "slug": "",
       "locale": "fr",
       "localizations": [
         {
@@ -23,7 +23,7 @@
         {
           "__component": "sections.hero",
           "title": "Le meilleure façon de faire votre site Corporate",
-          "label": "Nouveau Strapi starter",
+          "label": "Nouveau starter Strapi",
           "description": "Commencer vite avec votre site corporate",
           "smallTextWithLink": "Vous voulez construire votre propre starter? Guide à venir",
           "buttons": [
@@ -46,18 +46,18 @@
           "__component": "sections.feature-rows-group",
           "features": [
             {
-              "title": "Les équipes marketing peuvent maintenant faire leurs propre pages",
-              "description": "Grace à une liste pré-construite de blocs UI, les marketers peuvent faire la mise en page exactement comme ils/elles veulent",
+              "title": "Les équipes marketing peuvent maintenant faire leurs propres pages",
+              "description": "Grace à une liste pré-construite de blocs UI, les équipes marketing peuvent faire la mise en page exactement comme elles veulent",
               "link": {
                 "url": "#",
                 "newTab": false,
-                "text": "Voir le liste de blocs UI"
+                "text": "Voir la liste de blocs UI"
               },
               "media": null
             },
             {
-              "title": "Laisser vos développeurs tranquille",
-              "description": "Vous pouvez publier, modifier, et supprimer des pages sans l'aide d'un développeur.  Votre équipe technique peut finalement concentrer sur d'autre taches.",
+              "title": "Laissez vos développeurs tranquilles",
+              "description": "Vous pouvez publier, modifier, et supprimer des pages sans l'aide d'un développeur.  Votre équipe technique peut enfin se concentrer sur d'autre tâches.",
               "link": {
                 "url": "#",
                 "newTab": false,
@@ -76,13 +76,13 @@
               "icon": null
             },
             {
-              "title": "Fully responsive",
-              "description": "Ce starter marche sur touts les tailles d'écrans.",
+              "title": "100% responsive",
+              "description": "Ce starter marche sur toutes les tailles d'écrans.",
               "icon": null
             },
             {
               "title": "Facile à personnaliser",
-              "description": "On utilise Tailwind pour le styling. Vous pouvez changez la thème de votre site sans besoin d'aller dans le code.",
+              "description": "On utilise Tailwind pour les styles. Vous pouvez changez le thème de votre site sans avoir besoin d'aller dans le code.",
               "icon": null
             }
           ]
@@ -90,7 +90,7 @@
         {
           "__component": "sections.testimonials-group",
           "title": "Ici, les témoignages des vos clients.",
-          "description": "Cette partie est où vous pouvez montrer vos clients.  Mettez des citations, et montrez les logos des entreprises qui aiment votre produit.",
+          "description": "Dans cette partie, vous pouvez mettre en avant vos clients.  Mettez des citations, et montrez les logos des entreprises qui aiment votre produit.",
           "link": {
             "url": "#",
             "newTab": false,
@@ -154,7 +154,7 @@
     },
     {
       "id": 6,
-      "slug": "pricing-fr",
+      "slug": "pricing",
       "locale": "fr",
       "localizations": [
         {
@@ -166,7 +166,7 @@
       "status": "published",
       "metadata": {
         "metaTitle": "Pricing",
-        "metaDescription": "Les plans différents",
+        "metaDescription": "Les différentes offres",
         "twitterCardType": "summary",
         "twitterUsername": null,
         "shareImage": null
@@ -174,14 +174,14 @@
       "contentSections": [
         {
           "__component": "sections.pricing",
-          "title": "Tableaux de tarifs",
+          "title": "Tableau de tarifs",
           "plans": [
             {
               "name": "Hobby",
-              "description": "Parfait pour des projets personnel",
+              "description": "Parfait pour des projets personnels",
               "isRecommended": null,
               "price": 0,
-              "pricePeriod": "forever",
+              "pricePeriod": "toujours",
               "features": [
                 {
                   "name": "Voilà une feature"
@@ -199,7 +199,7 @@
               "description": "Un plan plus avancé",
               "isRecommended": true,
               "price": 20,
-              "pricePeriod": "per month",
+              "pricePeriod": "par mois",
               "features": [
                 {
                   "name": "Fonctionnalité 1"
@@ -217,7 +217,7 @@
               "description": "Pour les besoin des grands entreprises",
               "isRecommended": null,
               "price": 299,
-              "pricePeriod": "per month",
+              "pricePeriod": "par mois",
               "features": [
                 {
                   "name": "Fonctionnalité 1"
@@ -236,7 +236,7 @@
     },
     {
       "id": 7,
-      "slug": "secret-fr",
+      "slug": "secret",
       "locale": "fr",
       "localizations": [
         {
@@ -262,7 +262,7 @@
     },
     {
       "id": 8,
-      "slug": "contact-fr",
+      "slug": "contact",
       "locale": "fr",
       "localizations": [
         {

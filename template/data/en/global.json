@@ -33,10 +33,7 @@
         "text": "Sign up",
         "type": "secondary"
       },
-      "logo" : {
-        "image": null,
-        "url": null
-      }
+      "logo" : null
     },
     "footer": {
       "smallText": "© Copyright My Company™",

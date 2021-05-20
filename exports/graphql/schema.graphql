@@ -51,6 +51,8 @@ type Global {
   notificationBanner: ComponentElementsNotificationBanner
   navbar: ComponentLayoutNavbar
   footer: ComponentLayoutFooter
+  locale: String
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Global]
 }
 
 input GlobalInput {
@@ -60,6 +62,8 @@ input GlobalInput {
   notificationBanner: ComponentElementsNotificationBannerInput
   navbar: ComponentLayoutNavbarInput
   footer: ComponentLayoutFooterInput
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
@@ -71,6 +75,8 @@ input editGlobalInput {
   notificationBanner: editComponentElementsNotificationBannerInput
   navbar: editComponentLayoutNavbarInput
   footer: editComponentLayoutFooterInput
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
@@ -207,11 +213,13 @@ type Page {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  slug: String
   shortName: String
   metadata: ComponentMetaMetadata
   contentSections: [PageContentSectionsDynamicZone]
   status: ENUM_PAGE_STATUS!
+  slug: String
+  locale: String
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Page]
 }
 
 type PageConnection {
@@ -229,10 +237,11 @@ type PageGroupBy {
   id: [PageConnectionId]
   created_at: [PageConnectionCreated_at]
   updated_at: [PageConnectionUpdated_at]
-  slug: [PageConnectionSlug]
   shortName: [PageConnectionShortName]
   metadata: [PageConnectionMetadata]
   status: [PageConnectionStatus]
+  slug: [PageConnectionSlug]
+  locale: [PageConnectionLocale]
 }
 
 type PageConnectionId {
@@ -247,11 +256,6 @@ type PageConnectionCreated_at {
 
 type PageConnectionUpdated_at {
   key: DateTime
-  connection: PageConnection
-}
-
-type PageConnectionSlug {
-  key: String
   connection: PageConnection
 }
 
@@ -270,22 +274,36 @@ type PageConnectionStatus {
   connection: PageConnection
 }
 
+type PageConnectionSlug {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionLocale {
+  key: String
+  connection: PageConnection
+}
+
 input PageInput {
-  slug: String
   shortName: String
   metadata: ComponentMetaMetadatumInput!
   contentSections: [PageContentSectionsDynamicZoneInput!]
   status: ENUM_PAGE_STATUS
+  slug: String
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
 
 input editPageInput {
-  slug: String
   shortName: String
   metadata: editComponentMetaMetadatumInput
   contentSections: [PageContentSectionsDynamicZoneInput!]
   status: ENUM_PAGE_STATUS
+  slug: String
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
@@ -763,6 +781,28 @@ type deleteFilePayload {
   file: UploadFile
 }
 
+type I18NLocale {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  code: String
+}
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
 type ComponentElementsFeatureColumn {
   id: ID!
   title: String!
@@ -957,22 +997,22 @@ input editComponentLayoutFooterInput {
 
 type ComponentLayoutNavbar {
   id: ID!
-  logo: UploadFile
   links: [ComponentLinksLink]
   button: ComponentLinksButtonLink
+  logo: UploadFile
 }
 
 input ComponentLayoutNavbarInput {
-  logo: ID
   links: [ComponentLinksLinkInput]
   button: ComponentLinksButtonLinkInput
+  logo: ID
 }
 
 input editComponentLayoutNavbarInput {
   id: ID
-  logo: ID
   links: [editComponentLinksLinkInput]
   button: editComponentLinksButtonLinkInput
+  logo: ID
 }
 
 enum ENUM_COMPONENTLINKSBUTTONLINK_TYPE {
@@ -1255,7 +1295,7 @@ input editComponentSectionsTestimonialsGroupInput {
   testimonials: [editComponentElementsTestimonialInput]
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Global | updateGlobalPayload | deleteGlobalPayload | LeadFormSubmissions | LeadFormSubmissionsConnection | LeadFormSubmissionsAggregator | LeadFormSubmissionsGroupBy | LeadFormSubmissionsConnectionId | LeadFormSubmissionsConnectionCreated_at | LeadFormSubmissionsConnectionUpdated_at | LeadFormSubmissionsConnectionEmail | LeadFormSubmissionsConnectionStatus | LeadFormSubmissionsConnectionLocation | createLeadFormSubmissionPayload | updateLeadFormSubmissionPayload | deleteLeadFormSubmissionPayload | Page | PageConnection | PageAggregator | PageGroupBy | PageConnectionId | PageConnectionCreated_at | PageConnectionUpdated_at | PageConnectionSlug | PageConnectionShortName | PageConnectionMetadata | PageConnectionStatus | createPagePayload | updatePagePayload | deletePagePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | ComponentElementsFeatureColumn | ComponentElementsFeatureRow | ComponentElementsFeature | ComponentElementsFooterSection | ComponentElementsLogos | ComponentElementsNotificationBanner | ComponentElementsPlan | ComponentElementsTestimonial | ComponentLayoutFooter | ComponentLayoutNavbar | ComponentLinksButtonLink | ComponentLinksButton | ComponentLinksLink | ComponentMetaMetadata | ComponentSectionsBottomActions | ComponentSectionsFeatureColumnsGroup | ComponentSectionsFeatureRowsGroup | ComponentSectionsHero | ComponentSectionsLargeVideo | ComponentSectionsLeadForm | ComponentSectionsPricing | ComponentSectionsRichText | ComponentSectionsTestimonialsGroup
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Global | updateGlobalPayload | deleteGlobalPayload | LeadFormSubmissions | LeadFormSubmissionsConnection | LeadFormSubmissionsAggregator | LeadFormSubmissionsGroupBy | LeadFormSubmissionsConnectionId | LeadFormSubmissionsConnectionCreated_at | LeadFormSubmissionsConnectionUpdated_at | LeadFormSubmissionsConnectionEmail | LeadFormSubmissionsConnectionStatus | LeadFormSubmissionsConnectionLocation | createLeadFormSubmissionPayload | updateLeadFormSubmissionPayload | deleteLeadFormSubmissionPayload | Page | PageConnection | PageAggregator | PageGroupBy | PageConnectionId | PageConnectionCreated_at | PageConnectionUpdated_at | PageConnectionShortName | PageConnectionMetadata | PageConnectionStatus | PageConnectionSlug | PageConnectionLocale | createPagePayload | updatePagePayload | deletePagePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | I18NLocale | ComponentElementsFeatureColumn | ComponentElementsFeatureRow | ComponentElementsFeature | ComponentElementsFooterSection | ComponentElementsLogos | ComponentElementsNotificationBanner | ComponentElementsPlan | ComponentElementsTestimonial | ComponentLayoutFooter | ComponentLayoutNavbar | ComponentLinksButtonLink | ComponentLinksButton | ComponentLinksLink | ComponentMetaMetadata | ComponentSectionsBottomActions | ComponentSectionsFeatureColumnsGroup | ComponentSectionsFeatureRowsGroup | ComponentSectionsHero | ComponentSectionsLargeVideo | ComponentSectionsLeadForm | ComponentSectionsPricing | ComponentSectionsRichText | ComponentSectionsTestimonialsGroup
 
 input InputID {
   id: ID!
@@ -1274,13 +1314,13 @@ type AdminUser {
 }
 
 type Query {
-  global(publicationState: PublicationState): Global
+  global(publicationState: PublicationState, locale: String): Global
   leadFormSubmission(id: ID!, publicationState: PublicationState): LeadFormSubmissions
   leadFormSubmissions(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [LeadFormSubmissions]
   leadFormSubmissionsConnection(sort: String, limit: Int, start: Int, where: JSON): LeadFormSubmissionsConnection
   page(id: ID!, publicationState: PublicationState): Page
-  pages(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Page]
-  pagesConnection(sort: String, limit: Int, start: Int, where: JSON): PageConnection
+  pages(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Page]
+  pagesConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): PageConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
 
   """
@@ -1297,8 +1337,8 @@ type Query {
 }
 
 type Mutation {
-  updateGlobal(input: updateGlobalInput): updateGlobalPayload
-  deleteGlobal: deleteGlobalPayload
+  updateGlobal(input: updateGlobalInput, locale: String): updateGlobalPayload
+  deleteGlobal(locale: String): deleteGlobalPayload
   createLeadFormSubmission(input: createLeadFormSubmissionInput): createLeadFormSubmissionPayload
   updateLeadFormSubmission(input: updateLeadFormSubmissionInput): updateLeadFormSubmissionPayload
   deleteLeadFormSubmission(input: deleteLeadFormSubmissionInput): deleteLeadFormSubmissionPayload
@@ -1334,6 +1374,8 @@ type Mutation {
   upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
   multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
   updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+  createGlobalLocalization(input: updateGlobalInput!): Global!
+  createPageLocalization(input: updatePageInput!): Page!
 }
 
 """

@@ -1,0 +1,112 @@
+{
+  "global": {
+    "id": 1,
+    "locale": "en",
+    "metaTitleSuffix": "Strapi Corporate",
+    "metadata": {
+      "metaTitle": "Strapi starter for Corporate Sites",
+      "metaDescription": "Build your corporate site with Strapi",
+      "twitterCardType": "summary",
+      "twitterUsername": "strapijs",
+      "shareImage": null
+    },
+    "notificationBanner": {
+      "text": "This page was built using the Strapi starter for Corporate Sites.\n[View other Strapi starters](https://strapi.io/starters)",
+      "type": "info"
+    },
+    "navbar": {
+      "links": [
+        {
+          "url": "/pricing",
+          "newTab": false,
+          "text": "Pricing"
+        },
+        {
+          "url": "/contact",
+          "newTab": false,
+          "text": "Contact"
+        }
+      ],
+      "button": {
+        "url": "#",
+        "newTab": false,
+        "text": "Sign up",
+        "type": "secondary"
+      },
+      "logo" : null
+    },
+    "footer": {
+      "smallText": "© Copyright My Company™",
+      "columns": [
+        {
+          "title": "Product",
+          "links": [
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Features"
+            },
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Sign up"
+            }
+          ]
+        },
+        {
+          "title": "Legal",
+          "links": [
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Privacy policy"
+            },
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Terms & conditions"
+            }
+          ]
+        },
+        {
+          "title": "Company",
+          "links": [
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Careers"
+            },
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Team"
+            }
+          ]
+        },
+        {
+          "title": "Social",
+          "links": [
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Twitter"
+            },
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "LinkedIn"
+            }
+          ]
+        }
+      ],
+      "logo": null
+    },
+    "favicon": null,
+    "localizations": [
+      {
+        "id": 2,
+        "locale": "fr"
+      }
+    ]
+  }
+}

@@ -1,6 +1,9 @@
 const fs = require("fs");
-const path = require("path");
-const { pages, global, leadFormSubmissions } = require("../../data/data.json");
+const {
+  pages,
+  globals,
+  leadFormSubmissions,
+} = require("../../data/data.js");
 
 async function isFirstRun() {
   const pluginStore = strapi.store({
@@ -43,6 +46,7 @@ async function setPublicPermissions(newPermissions) {
         .query("permission", "users-permissions")
         .update({ id: permission.id }, { enabled: true });
     });
+
   await Promise.all(updatePromises);
 }
 
@@ -76,21 +80,21 @@ async function createEntry(model, entry, files) {
       await strapi.entityService.uploadFiles(createdEntry, files, {
         model,
       });
-      const uploads = await strapi.query('file', 'upload').find();
-      const uploadsWithInfo = uploads.map(upload => {
-        const [alternativeText] = upload.name.split(".")
+      const uploads = await strapi.query("file", "upload").find();
+      const uploadsWithInfo = uploads.map((upload) => {
+        const [alternativeText] = upload.name.split(".");
         return strapi.plugins.upload.services.upload.updateFileInfo(upload.id, {
-          alternativeText
-        })
-      })
-      await Promise.all(uploadsWithInfo)
+          alternativeText,
+        });
+      });
+      await Promise.all(uploadsWithInfo);
     }
   } catch (e) {
     console.log(e);
   }
 }
 
-async function importPages() {
+async function importPages(pages) {
   const getPageCover = (slug) => {
     switch (slug) {
       case "":
@@ -175,8 +179,11 @@ async function importGlobal() {
     "navbar.logo": getFileData("logo.png"),
     "footer.logo": getFileData("logo.png"),
   };
+
   // Create entry
-  await createEntry("global", global, files);
+  globals.forEach(async (locale) => {
+    await createEntry("global", locale, files);
+  })
 }
 
 async function importLeadFormSubmissionData() {
@@ -190,12 +197,19 @@ async function importSeedData() {
   await setPublicPermissions({
     global: ["find"],
     page: ["find", "findone"],
-    'lead-form-submissions': ["create"],
+    "lead-form-submissions": ["create"],
   });
 
+
+  await strapi.query("locale", "i18n").create({
+    name: "French (fr)",
+    code: "fr",
+  });
+
+  
   // Create all entries
   await importGlobal();
-  await importPages();
+  await importPages(pages);
   await importLeadFormSubmissionData();
 }
 

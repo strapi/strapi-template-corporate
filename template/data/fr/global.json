@@ -1,0 +1,113 @@
+{
+  "globalFR": {
+    "id": 2,
+    "locale": "fr",
+    "metaTitleSuffix": "Strapi Corporate",
+    "metadata": {
+      "metaTitle": "Strapi starter for Corporate Sites",
+      "metaDescription": "Créer votre site corporate avec Strapi",
+      "twitterCardType": "summary",
+      "twitterUsername": "strapijs",
+      "shareImage": null
+    },
+    "notificationBanner": {
+      "text": "Cette page a été crée avec le Strapi starter pour les sites Corporate.\n [Voir les autres starters Strapi](https://strapi.io/starters)",
+      "type": "info"
+      
+    },
+    "navbar": {
+      "links": [
+        {
+          "url": "/pricing",
+          "newTab": false,
+          "text": "tarifs"
+        },
+        {
+          "url": "/contact",
+          "newTab": false,
+          "text": "nous contacter"
+        }
+      ],
+      "button": {
+        "url": "#",
+        "newTab": false,
+        "text": "S'inscrire",
+        "type": "secondary"
+      },
+      "logo" : null
+    },
+    "footer": {
+      "smallText": "© Copyright Mon Entreprise™",
+      "columns": [
+        {
+          "title": "Produit",
+          "links": [
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Fonctionnalités"
+            },
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "S'inscrire"
+            }
+          ]
+        },
+        {
+          "title": "Légal",
+          "links": [
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Confidentialité"
+            },
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Mentions légales"
+            }
+          ]
+        },
+        {
+          "title": "Entreprise",
+          "links": [
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Nous rejoindre"
+            },
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "L'équipe"
+            }
+          ]
+        },
+        {
+          "title": "Réseaux sociaux",
+          "links": [
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "Twitter"
+            },
+            {
+              "url": "#",
+              "newTab": false,
+              "text": "LinkedIn"
+            }
+          ]
+        }
+      ],
+      "logo": null
+    },
+    "favicon": null,
+    "localizations": [
+      {
+        "id": 1,
+        "locale": "en"
+      }
+    ]
+  }
+}

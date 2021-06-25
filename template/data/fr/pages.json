@@ -22,7 +22,7 @@
       "contentSections": [
         {
           "__component": "sections.hero",
-          "title": "Le meilleure façon de faire votre site Corporate",
+          "title": "La meilleure façon de faire votre site Corporate",
           "label": "Nouveau starter Strapi",
           "description": "Commencer vite avec votre site corporate",
           "smallTextWithLink": "Vous voulez construire votre propre starter? Guide à venir",

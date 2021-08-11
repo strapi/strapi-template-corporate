@@ -25,7 +25,7 @@ async function setPublicPermissions(newPermissions) {
   // List all available permissions
   const publicPermissions = await strapi
     .query("permission", "users-permissions")
-    .find({ type: "application", role: publicRole.id });
+    .findMany({ type: "application", role: publicRole.id });
 
   // Update permission to match new config
   const controllersToUpdate = Object.keys(newPermissions);
@@ -80,7 +80,7 @@ async function createEntry(model, entry, files) {
       await strapi.entityService.uploadFiles(createdEntry, files, {
         model,
       });
-      const uploads = await strapi.query("file", "upload").find();
+      const uploads = await strapi.query("file", "upload").findMany();
       const uploadsWithInfo = uploads.map((upload) => {
         const [alternativeText] = upload.name.split(".");
         return strapi.plugins.upload.services.upload.updateFileInfo(upload.id, {

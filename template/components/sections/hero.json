@@ -16,12 +16,11 @@
       "type": "string"
     },
     "picture": {
-      "model": "file",
-      "via": "related",
       "allowedTypes": [
         "images"
       ],
-      "plugin": "upload",
+      "type": "media",
+      "multiple": false,
       "required": false
     },
     "smallTextWithLink": {

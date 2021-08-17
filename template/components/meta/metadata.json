@@ -15,12 +15,11 @@
       "required": true
     },
     "shareImage": {
-      "model": "file",
-      "via": "related",
       "allowedTypes": [
         "images"
       ],
-      "plugin": "upload",
+      "type": "media",
+      "multiple": false,
       "required": false
     },
     "twitterCardType": {

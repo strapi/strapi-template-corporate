@@ -7,21 +7,19 @@
   "options": {},
   "attributes": {
     "logo": {
-      "model": "file",
-      "via": "related",
       "allowedTypes": [
         "images"
       ],
-      "plugin": "upload",
+      "type": "media",
+      "multiple": false,
       "required": false
     },
     "picture": {
-      "model": "file",
-      "via": "related",
       "allowedTypes": [
         "images"
       ],
-      "plugin": "upload",
+      "type": "media",
+      "multiple": false,
       "required": false
     },
     "text": {

@@ -18,12 +18,11 @@
       "component": "links.button-link"
     },
     "logo": {
-      "model": "file",
-      "via": "related",
       "allowedTypes": [
         "images"
       ],
-      "plugin": "upload",
+      "type": "media",
+      "multiple": false,
       "required": true
     }
   }

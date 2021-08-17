@@ -15,13 +15,12 @@
       "type": "text"
     },
     "media": {
-      "model": "file",
-      "via": "related",
       "allowedTypes": [
         "images",
         "videos"
       ],
-      "plugin": "upload",
+      "type": "media",
+      "multiple": false,
       "required": true
     },
     "link": {

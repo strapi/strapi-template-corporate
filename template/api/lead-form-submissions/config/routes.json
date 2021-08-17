@@ -10,14 +10,6 @@
     },
     {
       "method": "GET",
-      "path": "/lead-form-submissions/count",
-      "handler": "lead-form-submissions.count",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
       "path": "/lead-form-submissions/:id",
       "handler": "lead-form-submissions.findOne",
       "config": {

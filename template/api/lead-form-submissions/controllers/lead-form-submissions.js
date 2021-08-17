@@ -5,4 +5,11 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+  count(ctx) {
+    if (ctx.query._q) {
+      return strapi.services["lead-form-submissions"].countSearch(ctx.query);
+    }
+    return strapi.services["lead-form-submissions"].count(ctx.query);
+  },
+};

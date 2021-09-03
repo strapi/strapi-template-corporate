@@ -19,13 +19,23 @@ async function isFirstRun() {
 async function setPublicPermissions(newPermissions) {
   // Find the ID of the public role
   const publicRole = await strapi
-    .query("role", "users-permissions")
-    .findOne({ type: "public" });
+    .query("plugins::users-permissions.role")
+    .findOne({
+      where: {
+        type: "public",
+      },
+    });
+  console.log("public role", publicRole)
 
   // List all available permissions
   const publicPermissions = await strapi
-    .query("permission", "users-permissions")
-    .findMany({ type: "application", role: publicRole.id });
+    .query("plugins::users-permissions.permission")
+    .findMany({
+      where: {
+        type: "application",
+        role: publicRole.id,
+      },
+    });
 
   // Update permission to match new config
   const controllersToUpdate = Object.keys(newPermissions);
@@ -41,10 +51,18 @@ async function setPublicPermissions(newPermissions) {
       return true;
     })
     .map((permission) => {
+      console.log("permission", permission)
       // Enable the selected permissions
       return strapi
-        .query("permission", "users-permissions")
-        .update({ id: permission.id }, { enabled: true });
+        .query("plugins::users-permissions.permission")
+        .update({
+          where: {
+            id: permission.id,
+          },
+          data: {
+            enabled: true,
+          },
+        });
     });
 
   await Promise.all(updatePromises);
@@ -75,13 +93,19 @@ function getFileData(fileName) {
 // Create an entry and attach files if there are any
 async function createEntry(model, entry, files) {
   try {
-    const createdEntry = await strapi.query(model).create(entry);
+    const createdEntry = await strapi
+      .query(`application::${model}.${model}`)
+      .create({ data: entry });
     if (files) {
-      await strapi.entityService.uploadFiles(createdEntry, files, {
-        model,
-      });
+      const uploadsA = await strapi.entityService.uploadFiles(
+        `application::${model}.${model}`,
+        createdEntry,
+        files
+      );
+      console.log(uploadsA);
       const uploads = await strapi.query("file", "upload").findMany();
       const uploadsWithInfo = uploads.map((upload) => {
+        console.log('upload', upload);
         const [alternativeText] = upload.name.split(".");
         return strapi.plugins.upload.services.upload.updateFileInfo(upload.id, {
           alternativeText,
@@ -201,12 +225,14 @@ async function importSeedData() {
   });
 
 
-  await strapi.query("locale", "i18n").create({
-    name: "French (fr)",
-    code: "fr",
+  await strapi.query("plugins::i18n.locale").create({
+    data: {
+      name: "French (fr)",
+      code: "fr",
+    },
   });
 
-  
+
   // Create all entries
   await importGlobal();
   await importPages(pages);

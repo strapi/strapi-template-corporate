@@ -1,9 +1,6 @@
 const fs = require("fs");
-const {
-  pages,
-  globals,
-  leadFormSubmissions,
-} = require("../../data/data.js");
+const { pages, globals, leadFormSubmissions } = require("../../data/data.js");
+const set = require("lodash.set");
 
 async function isFirstRun() {
   const pluginStore = strapi.store({
@@ -19,17 +16,16 @@ async function isFirstRun() {
 async function setPublicPermissions(newPermissions) {
   // Find the ID of the public role
   const publicRole = await strapi
-    .query("plugins::users-permissions.role")
+    .query("plugin::users-permissions.role")
     .findOne({
       where: {
         type: "public",
       },
     });
-  console.log("public role", publicRole)
 
   // List all available permissions
   const publicPermissions = await strapi
-    .query("plugins::users-permissions.permission")
+    .query("plugin::users-permissions.permission")
     .findMany({
       where: {
         type: "application",
@@ -51,18 +47,15 @@ async function setPublicPermissions(newPermissions) {
       return true;
     })
     .map((permission) => {
-      console.log("permission", permission)
       // Enable the selected permissions
-      return strapi
-        .query("plugins::users-permissions.permission")
-        .update({
-          where: {
-            id: permission.id,
-          },
-          data: {
-            enabled: true,
-          },
-        });
+      return strapi.query("plugin::users-permissions.permission").update({
+        where: {
+          id: permission.id,
+        },
+        data: {
+          enabled: true,
+        },
+      });
     });
 
   await Promise.all(updatePromises);
@@ -93,26 +86,38 @@ function getFileData(fileName) {
 // Create an entry and attach files if there are any
 async function createEntry(model, entry, files) {
   try {
-    const createdEntry = await strapi
-      .query(`application::${model}.${model}`)
-      .create({ data: entry });
     if (files) {
-      const uploadsA = await strapi.entityService.uploadFiles(
-        `application::${model}.${model}`,
-        createdEntry,
-        files
-      );
-      console.log(uploadsA);
-      const uploads = await strapi.query("file", "upload").findMany();
-      const uploadsWithInfo = uploads.map((upload) => {
-        console.log('upload', upload);
-        const [alternativeText] = upload.name.split(".");
-        return strapi.plugins.upload.services.upload.updateFileInfo(upload.id, {
-          alternativeText,
-        });
-      });
-      await Promise.all(uploadsWithInfo);
+      for (const [key, file] of Object.entries(files)) {
+        console.log(file)
+        // Get file name without the extension
+        const [fileName] = file.name.split('.');
+        // Upload each individual file
+        const uploadedFile = await strapi
+          .plugin("upload")
+          .service("upload")
+          .upload({
+            files: file,
+            data: {
+              fileInfo: {
+                alternativeText: fileName,
+                caption: fileName,
+                name: fileName,
+              },
+            },
+          });
+
+        // Attach each file to its entry
+        set(entry, key, uploadedFile[0].id);
+      }
     }
+
+    // Create the entity in Strapi
+    const createdEntry = await strapi.entityService.create(
+      `api::${model}.${model}`,
+      {
+        data: entry,
+      }
+    );
   } catch (e) {
     console.log(e);
   }
@@ -152,9 +157,8 @@ async function importPages(pages) {
           }
         };
         section.features.forEach((feature, featureIndex) => {
-          files[
-            `contentSections.${index}.features.${featureIndex}.media`
-          ] = getFeatureMedia(featureIndex);
+          files[`contentSections.${index}.features.${featureIndex}.media`] =
+            getFeatureMedia(featureIndex);
         });
       } else if (section.__component === "sections.feature-columns-group") {
         const getFeatureMedia = (featureIndex) => {
@@ -170,15 +174,13 @@ async function importPages(pages) {
           }
         };
         section.features.forEach((feature, featureIndex) => {
-          files[
-            `contentSections.${index}.features.${featureIndex}.icon`
-          ] = getFeatureMedia(featureIndex);
+          files[`contentSections.${index}.features.${featureIndex}.icon`] =
+            getFeatureMedia(featureIndex);
         });
       } else if (section.__component === "sections.testimonials-group") {
         section.logos.forEach((logo, logoIndex) => {
-          files[
-            `contentSections.${index}.logos.${logoIndex}.logo`
-          ] = getFileData("logo.png");
+          files[`contentSections.${index}.logos.${logoIndex}.logo`] =
+            getFileData("logo.png");
         });
         section.testimonials.forEach((testimonial, testimonialIndex) => {
           files[
@@ -207,7 +209,7 @@ async function importGlobal() {
   // Create entry
   globals.forEach(async (locale) => {
     await createEntry("global", locale, files);
-  })
+  });
 }
 
 async function importLeadFormSubmissionData() {
@@ -224,14 +226,12 @@ async function importSeedData() {
     "lead-form-submissions": ["create"],
   });
 
-
-  await strapi.query("plugins::i18n.locale").create({
+  await strapi.query("plugin::i18n.locale").create({
     data: {
       name: "French (fr)",
       code: "fr",
     },
   });
-
 
   // Create all entries
   await importGlobal();

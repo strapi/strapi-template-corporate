@@ -1,9 +1,9 @@
 module.exports = function(scope) {
-  console.log(scope);
   return {
     package: {
       dependencies: {
         "@strapi/plugin-graphql": scope.strapiVersion,
+        "lodash.set": "^4.3.2",
       }
     }
   }

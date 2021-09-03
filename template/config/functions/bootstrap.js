@@ -88,7 +88,6 @@ async function createEntry(model, entry, files) {
   try {
     if (files) {
       for (const [key, file] of Object.entries(files)) {
-        console.log(file)
         // Get file name without the extension
         const [fileName] = file.name.split('.');
         // Upload each individual file

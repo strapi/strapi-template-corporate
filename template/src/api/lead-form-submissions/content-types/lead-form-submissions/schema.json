@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "lead_form_submissions",
   "info": {
-    "singularName": "lead-form-submissions",
+    "singularName": "lead-form-submission",
     "pluralName": "lead-form-submissions",
     "displayName": "lead-form-submissions",
     "name": "lead-form-submissions"

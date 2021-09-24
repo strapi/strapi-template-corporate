@@ -2,8 +2,10 @@
   "kind": "collectionType",
   "collectionName": "lead_form_submissions",
   "info": {
-    "name": "LeadFormSubmissions",
-    "description": ""
+    "singularName": "lead-form-submissions",
+    "pluralName": "lead-form-submissions",
+    "displayName": "lead-form-submissions",
+    "name": "lead-form-submissions"
   },
   "options": {
     "increments": true,

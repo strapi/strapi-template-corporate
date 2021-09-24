@@ -4,8 +4,8 @@
   "info": {
     "singularName": "lead-form-submission",
     "pluralName": "lead-form-submissions",
-    "displayName": "lead-form-submissions",
-    "name": "lead-form-submissions"
+    "displayName": "Lead form submission",
+    "name": "lead-form-submission"
   },
   "options": {
     "increments": true,

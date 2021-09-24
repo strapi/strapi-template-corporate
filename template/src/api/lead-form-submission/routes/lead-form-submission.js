@@ -3,31 +3,31 @@ module.exports = {
     {
       method: 'GET',
       path: '/lead-form-submissions',
-      handler: 'lead-form-submissions.find',
+      handler: 'lead-form-submission.find',
       config: { policies: [] }
     },
     {
       method: 'GET',
       path: '/lead-form-submissions/:id',
-      handler: 'lead-form-submissions.findOne',
+      handler: 'lead-form-submission.findOne',
       config: { policies: [] }
     },
     {
       method: 'POST',
       path: '/lead-form-submissions',
-      handler: 'lead-form-submissions.create',
+      handler: 'lead-form-submission.create',
       config: { policies: [] }
     },
     {
       method: 'PUT',
       path: '/lead-form-submissions/:id',
-      handler: 'lead-form-submissions.update',
+      handler: 'lead-form-submission.update',
       config: { policies: [] }
     },
     {
       method: 'DELETE',
       path: '/lead-form-submissions/:id',
-      handler: 'lead-form-submissions.delete',
+      handler: 'lead-form-submission.delete',
       config: { policies: [] }
     }
   ]
